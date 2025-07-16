@@ -4,8 +4,15 @@ from collections import Counter
 
 def detect_headings(blocks):
     # Find the title: largest font on page 1
-    page1_blocks = [b for b in blocks if b["page"] == 1]
-    title_block = max(page1_blocks, key=lambda b: b["font_size"])
+    page1_blocks = [b for b in blocks if b["page"] == 1 and b["text"].strip()]
+    if page1_blocks:
+        title_block = max(page1_blocks, key=lambda b: b["font_size"])
+    else:
+        # fallback: largest text block anywhere
+        valid_blocks = [b for b in blocks if b["text"].strip()]
+        if not valid_blocks:
+            raise ValueError("No text detected in document.")
+        title_block = max(valid_blocks, key=lambda b: b["font_size"])
     title = title_block["text"]
 
     # Collect unique font sizes document-wide
@@ -67,9 +74,9 @@ if __name__ == "__main__":
     
     headings = detect_headings(text_blocks)
     
-    # print(f"Title: {headings['title']}")
-    # for item in headings["outline"]:
-    #     print(f"{item['level']}: {item['text']} (Page {item['page']})")
+    print(f"Title: {headings['title']}")
+    for item in headings["outline"]:
+        print(f"{item['level']}: {item['text']} (Page {item['page']})")
 
 
 
