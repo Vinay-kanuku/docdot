@@ -63,7 +63,7 @@ def detect_headings(blocks):
 
 
 if __name__ == "__main__":
-    import sys
+    8import sys
     if len(sys.argv) != 2:
         print("Usage: python heading_detector.py <pdf_path>")
         sys.exit(1)
