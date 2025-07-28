@@ -1,8 +1,12 @@
-__pycache__/
+# __pycache__
+__pycache__
 *.pyc
-outputs/
-inputs/*.pdf
+
+# Sample dataset
+sample_dataset/
+
+# environment
 .env
-*.log
-.venv
-doc_env
+
+# bash files
+*.bash
