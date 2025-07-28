@@ -1,4 +1,3 @@
-# improved_heading_detector.py
 import re
 import math
 from collections import Counter, defaultdict

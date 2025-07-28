@@ -1,10 +1,8 @@
-# main.py - Updated to use improved heading detection
 import os
 import json
 import time
 from pathlib import Path
 
-# Import the improved system
 try:
     from heading_detector import ImprovedHeadingDetector, extract_enhanced_text_blocks
     USE_IMPROVED = True
@@ -52,10 +50,8 @@ def main():
         input_dir = os.path.join(script_dir, "inputs")
         output_dir = os.path.join(script_dir, "outputs")
     
-    # Ensure output directory exists
     os.makedirs(output_dir, exist_ok=True)
     
-    # Find all PDF files
     pdf_files = []
     if os.path.exists(input_dir):
         pdf_files = [f for f in os.listdir(input_dir) if f.lower().endswith('.pdf')]
@@ -70,20 +66,16 @@ def main():
     for filename in pdf_files:
         pdf_path = os.path.join(input_dir, filename)
         
-        # Process the PDF
         result = process_pdf(pdf_path)
         
-        # Generate output filename
         output_filename = f"{Path(filename).stem}.json"
         output_path = os.path.join(output_dir, output_filename)
         
-        # Write JSON output
         with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(result, f, indent=2, ensure_ascii=False)
         
         print(f"Saved: {output_filename}")
         
-        # Debug output for comparison
         print(f"Title: {result['title']}")
         print(f"Found {len(result['outline'])} headings:")
         for heading in result['outline'][:5]:  # Show first 5

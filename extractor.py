@@ -1,5 +1,4 @@
-# extractor.py
-import fitz  # PyMuPDF
+import fitz
 
 def extract_text_blocks(pdf_path):
     doc = fitz.open(pdf_path)
