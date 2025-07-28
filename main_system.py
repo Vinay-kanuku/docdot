@@ -86,7 +86,7 @@ class HierarchyBuilder:
                 return largest_block.text.strip()
         
         # Strategy 4: First reasonable text block
-        for block in blocks:
+        for block in blocks:9
             text = block.text.strip()
             if (len(text) > 10 and len(text) < 200 and 
                 not text.startswith(('http', 'www', '@', '#'))):

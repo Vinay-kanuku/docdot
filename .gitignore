@@ -5,3 +5,4 @@ inputs/*.pdf
 .env
 *.log
 .venv
+doc_env
